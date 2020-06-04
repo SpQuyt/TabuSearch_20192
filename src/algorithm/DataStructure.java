@@ -22,4 +22,5 @@ public class DataStructure {
     public int getC() {
         return c;
     }
+    
 }

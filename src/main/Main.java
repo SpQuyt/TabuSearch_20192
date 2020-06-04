@@ -30,34 +30,49 @@ public class Main {
         }
     }
     
-//    private static double checkdata(TabuSearchRunner runner,  DataStructure data) {
-//    	runner.newTrace();	
-//		Class dataClass = getData().getClass();
-//		
-//		List<Object> listObjects = runner.getAllGetterValueMethodFrom(dataClass, getData());
-//		Method currentMethod = runner.getMethodInClass("checkTriangle", int.class, int.class, int.class);
-//        runner.run(currentMethod, null, listObjects.toArray(new Object[listObjects.size()]));
-//        runner.getExecutionPath();
-//        
-//        Gson gson = new Gson();
-////        String stringData = gson.toJson(getData());
-//		
-//        double fitnessValue1 = runner.calculateFitnessValue(runner.getExecutionPath(), targetPath);
-//        
-//        if (fitnessValue1 > fitnessValue) {
-//			bestSolution = getData();
-//			
-//			fitnessValue = fitnessValue1;
-//			
-//			if (fitnessValue == 1) {
-//				break;
-//			}
-//		} 
-//        
-//        
-//       
-//        i++;
-//    }
+    private static void checkdata(List<Set<Integer>> pathsList, TabuSearchRunner runner,  DataStructure data) {
+    	int i = 0;
+		
+		for (Set<Integer> pathList : pathsList) {
+			if (pathList.size() == 0 ) continue;
+			Object bestSolution = getData();
+			
+			double fitnessValue = 0.0;
+			
+			while ( i<2 ) {
+				runner.newTrace();	
+				Class dataClass = getData().getClass();
+				
+				List<Object> listObjects = runner.getAllGetterValueMethodFrom(dataClass, getData());
+				Method currentMethod = runner.getMethodInClass("checkTriangle", int.class, int.class, int.class);
+                runner.run(currentMethod, null, listObjects.toArray(new Object[listObjects.size()]));
+    			
+                Gson gson = new Gson();
+//                String stringData = gson.toJson(getData());
+				
+                double fitnessValue1 = runner.calculateFitnessValue(runner.getExecutionPath(), pathList);
+                
+                if (fitnessValue1 > fitnessValue) {
+					bestSolution = getData();
+					
+					fitnessValue = fitnessValue1;
+					
+					if (fitnessValue == 1) {
+						break;
+					}
+				} 
+//                
+//                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC()));
+//                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC()));
+//                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC()));
+               
+                i++;
+			}
+			testData.add(new Gson().toJson(bestSolution));
+			System.out.println(fitnessValue);
+			System.out.println("TEST DATA: " + testData);
+		}
+    }
 	
 
 	public static void main(String[] args) {
@@ -75,48 +90,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		int i = 0;
-		
-		for (Set<Integer> pathList : pathsList) {
-			System.out.println(pathList);
-			if (pathList.size() == 0 ) continue;
-			Object bestSolution = getData();
-			
-			double fitnessValue = 0.0;
-			
-			while ( i<2 ) {
-				runner.newTrace();	
-				Class dataClass = getData().getClass();
-				
-				List<Object> listObjects = runner.getAllGetterValueMethodFrom(dataClass, getData());
-				Method currentMethod = runner.getMethodInClass("checkTriangle", int.class, int.class, int.class);
-                runner.run(currentMethod, null, listObjects.toArray(new Object[listObjects.size()]));
-    			System.out.println(runner.getExecutionPath());
-    			
-                Gson gson = new Gson();
-//                String stringData = gson.toJson(getData());
-				
-                double fitnessValue1 = runner.calculateFitnessValue(runner.getExecutionPath(), pathList);
-                System.out.println(fitnessValue1);
-                
-                if (fitnessValue1 > fitnessValue) {
-					bestSolution = getData();
-					
-					fitnessValue = fitnessValue1;
-					
-					if (fitnessValue == 1) {
-						break;
-					}
-				} 
-                
-                
-               
-                i++;
-			}
-//			testData.add(new Gson().toJson(bestSolution));
-			System.out.println(fitnessValue);
-			System.out.println("TEST DATA: " + bestSolution);
-		}
+		checkdata(pathsList, runner, getData());
 		
 		
 //		Method currentMethod = runner.getMethodInClass("checkTriangle", int.class, int.class, int.class);
