@@ -8,7 +8,7 @@ import java.util.*;
 public class PathGenerator {
 	private String className;
     private String rootPath = System.getProperty("user.dir");
-    private String projectDir = "F:\\GITHUB\\Java_Workspace\\TabuSearch_20192\\src\\";
+    private String projectDir = "C:\\Users\\admin\\Documents\\TabuSearch_20192\\src\\";
 
     private final String OJ_POSTFIX = ".oj";
     private final String PATH_POSTFIX = ".path";

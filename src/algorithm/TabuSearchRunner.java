@@ -32,7 +32,7 @@ public class TabuSearchRunner {
         return !method.getName().equals("getClass");
     }
 	
-	private List<Object> getAllGetterValueMethodFrom(Class dataClass, Object instanceObject) {
+	public List<Object> getAllGetterValueMethodFrom(Class dataClass, Object instanceObject) {
         List<Object> objects = new ArrayList<>();
         Method[] methods = dataClass.getMethods();
 
@@ -69,7 +69,7 @@ public class TabuSearchRunner {
         }
     }
 	
-	 private void newTrace() {
+	 public void newTrace() {
         try {
             testClass.getDeclaredMethod("newTrace", null).invoke(null, null);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
@@ -109,4 +109,9 @@ public class TabuSearchRunner {
 
         return (double) executionNodesInTargetPath.size() / targetPath.size();
 	}
+	
+//	private void runTabu(Method method, ) {
+//		// TODO Auto-generated method stub
+//
+//	}
 }
