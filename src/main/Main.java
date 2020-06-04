@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.google.gson.Gson;
 import javax.xml.crypto.Data;
 
 import algorithm.DataStructure;
@@ -21,15 +20,6 @@ public class Main {
 	private static <T> T getData() {
 		return (T) Data;
 	}
-	
-    private static void newTrace() {
-        try {
-            testClass.getDeclaredMethod("newTrace", null).invoke(null, null);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-    }
-	
 
 	public static void main(String[] args) {
 		
@@ -63,7 +53,7 @@ public class Main {
                 runner.run(currentMethod, null, listObjects.toArray(new Object[listObjects.size()]));
                 runner.getExecutionPath();
                 
-                Gson gson = new Gson();
+//                Gson gson = new Gson();
 //                String stringData = gson.toJson(getData());
 				
                 double fitnessValue1 = runner.calculateFitnessValue(runner.getExecutionPath(), targetPath);
