@@ -94,6 +94,7 @@ public class TabuSearchRunner {
     }
 	
 	public double calculateFitnessValue(Set executionPath, Set targetPath) {
+		System.out.print(executionPath);
 		List<Integer> targetPathArray = new ArrayList<>(targetPath);
         List<Integer> executionPathArray = new ArrayList<>(executionPath);
         List<Integer> executionNodesInTargetPath = new ArrayList<>();
