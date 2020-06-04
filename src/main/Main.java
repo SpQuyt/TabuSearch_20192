@@ -57,14 +57,14 @@ public class Main {
 					
 					fitnessValue = fitnessValue1;
 					
-					if (fitnessValue == 1) {
+					if (fitnessValue1 == 1) {
 						break;
 					}
 				} 
 //                
-//                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC()));
-//                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC()));
-//                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC()));
+                checkdata(pathsList, runner, new DataStructure(Data.getA() + 1, Data.getB(), Data.getC()));
+                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB() + 1, Data.getC()));
+                checkdata(pathsList, runner, new DataStructure(Data.getA(), Data.getB(), Data.getC() + 1));
                
                 i++;
 			}
