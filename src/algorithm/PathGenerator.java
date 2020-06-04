@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class PathGenerator {
-	private String className;
-    private String rootPath = System.getProperty("user.dir");
-    private String projectDir = "C:\\Users\\admin\\Documents\\TabuSearch_20192\\src\\";
+    private String projectDir = "/Users/gotit/Documents/git/TabuSearch_20192/src/";
 
     private final String OJ_POSTFIX = ".oj";
     private final String PATH_POSTFIX = ".path";
@@ -19,8 +17,6 @@ public class PathGenerator {
     private Map paths = new HashMap();
 
     public PathGenerator(String className) {
-        this.className = className;
-
         OJ_FILE_NAME = projectDir + className + OJ_POSTFIX;
         PATH_FILE_NAME = projectDir + className + PATH_POSTFIX;
     }

@@ -2,6 +2,6 @@
 
 public class Common {
 
-	static final String relativePath = "C:\\Users\\admin\\Documents\\TabuSearch_20192\\src\\";
+	static final String relativePath = "/Users/gotit/Documents/git/TabuSearch_20192/src/";
 
 }
